@@ -10,12 +10,12 @@ const LS_KEY = "contacts";
 
 export const App = () => {
   const [contacts, setContacts] = useState(() => {
-    return JSON.parse(window.localStorage.getItem(LS_KEY) ?? []);
+    return JSON.parse(window.localStorage.getItem(LS_KEY)) ?? [];
   });
   const [filter, setFilter] = useState("");
 
   useEffect(() => {
-    localStorage.setItem(LS_KEY, JSON.stringify(contacts));
+    window.localStorage.setItem(LS_KEY, JSON.stringify(contacts));
   }, [contacts]);
 
   const filterInputChange = (evt) => {
